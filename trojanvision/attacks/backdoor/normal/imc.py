@@ -44,13 +44,13 @@ class IMC(TrojanNN):
         super().add_argument(group)
         group.add_argument('--attack_remask_epochs', type=int,
                            help='inner epoch to optimize watermark during each training epoch '
-                           '(default: 1)')
+                           '(default: 20)')
         group.add_argument('--attack_remask_lr', type=float,
                            help='learning rate of Adam optimizer to optimize watermark'
                            '(default: 0.1)')
         return group
 
-    def __init__(self, attack_remask_epochs: int = 1, attack_remask_lr: float = 0.1, **kwargs):
+    def __init__(self, attack_remask_epochs: int = 20, attack_remask_lr: float = 0.1, **kwargs):
         super().__init__(**kwargs)
         self.param_list['imc'] = ['attack_remask_epochs', 'attack_remask_lr']
         self.attack_remask_epochs = attack_remask_epochs
