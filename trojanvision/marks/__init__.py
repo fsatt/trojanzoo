@@ -395,8 +395,9 @@ class Watermark(BasicObject):
             mark = F.resize(mark, size=(self.mark_width, self.mark_height))
             alpha_mask = torch.ones_like(mark[0])
             if mark.size(0) == 4:
-                mark = mark[:-1]
                 alpha_mask = mark[-1]
+                mark = mark[:-1]
+                mark_background_color = None
             if self.data_shape[0] == 1 and mark.size(0) == 3:
                 mark = F.rgb_to_grayscale(mark, num_output_channels=1)
             mark = torch.cat([mark, alpha_mask.unsqueeze(0)])
