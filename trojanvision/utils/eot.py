@@ -1,9 +1,20 @@
 #!/usr/bin/env python3
 
-"""Shared Expectation over Transformations (EOT) utilities.
+r"""Shared Expectation over Transformations (EOT) utilities.
 
 Pure functions used by both attacks (IMC_EOT, BadNet_Aug) and defences
-(NeuralCleanse_EOT).  No class state — callers pass the parameters they need.
+(NeuralCleanse_EOT). No class state; callers pass the parameters they need.
+
+EOT was proposed by Athalye et al. for synthesizing physically robust
+adversarial examples; we reuse the same transform-averaging idea for
+trigger optimisation and reconstruction.
+
+See Also:
+    * paper: `Synthesizing Robust Adversarial Examples`_
+      (Athalye et al., ICML 2018)
+
+.. _Synthesizing Robust Adversarial Examples:
+    https://proceedings.mlr.press/v80/athalye18b.html
 """
 
 import torch
